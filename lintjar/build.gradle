@@ -1,0 +1,30 @@
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+    google()
+    jcenter()
+    maven{ url'http://maven.aliyun.com/nexus/content/groups/public/' }
+    maven{ url'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
+    // maven { url "http://jcenter.bintray.com" }
+}
+
+dependencies {
+    compile 'com.android.tools.lint:lint-api:25.3.0'
+    compile 'com.android.tools.lint:lint-checks:25.3.0'
+}
+
+jar {
+    manifest {
+        // 这个路径非常重要,否则导包无法进行
+        attributes("Lint-Registry": "cn.pumpkin.lintjar.core.MyIssueRegistry")
+    }
+}
+
+configurations {
+    lintChecks
+}
+
+dependencies {
+    lintChecks files(jar)
+}
