@@ -1,4 +1,4 @@
-package cn.pumpkin.lintjar.core.detector;
+package cn.pumpkin.lintjar25.core.detector;
 
 import com.android.tools.lint.detector.api.Category;
 import com.android.tools.lint.detector.api.Detector;
@@ -33,13 +33,15 @@ public class LogDetector extends Detector implements Detector.JavaPsiScanner{
 
     @Override
     public List<String> getApplicableMethodNames() {
-        return Arrays.asList("v", "d", "i", "w", "e", "wtf");
+        return Arrays.asList("v", "d", "i", "w", "e", "wtf","addSum");
     }
 
     @Override
     public void visitMethod(JavaContext context, JavaElementVisitor visitor, PsiMethodCallExpression call, PsiMethod method) {
-        if (context.getEvaluator().isMemberInClass(method, "android.util.Log")) {
-            context.report(ISSUE, call, context.getLocation(call.getMethodExpression()), "dun't use android.util.Log,using uniform tool class liuzhibao");
+        if (context.getEvaluator().isMemberInClass(method, "android.util.Log")
+                || context.getEvaluator().isMemberInClass(method, "cn.pumpkin.angrypandalint.MainActivity")) {
+            context.report(ISSUE, call, context.getLocation(call.getMethodExpression()),
+                    "dun't use android.util.Log,using uniform tool class liuzhibao");
         }
     }
 
