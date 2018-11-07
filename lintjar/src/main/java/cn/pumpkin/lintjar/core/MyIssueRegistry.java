@@ -6,6 +6,7 @@ import com.android.tools.lint.detector.api.Issue;
 import java.util.Arrays;
 import java.util.List;
 
+import cn.pumpkin.lintjar.core.detector.scaner.HashMapForJDK7Detector;
 import cn.pumpkin.lintjar.core.detector.scaner.LoggerUsageDetector;
 import cn.pumpkin.lintjar.core.detector.scaner.XsfActivityFragmentLayoutNameDetector;
 import cn.pumpkin.lintjar.core.detector.scaner.XsfCustomToastDetector;
@@ -31,6 +32,7 @@ public class MyIssueRegistry extends IssueRegistry {
                 , XsfMessageObtainDetector.ISSUE
                 , XsfCustomToastDetector.ISSUE
                 , XsfLogDetector.ISSUE
-                , XsfViewIdNameDetector.ISSUE);
+                , XsfViewIdNameDetector.ISSUE
+        , HashMapForJDK7Detector.ISSUE);
     }
 }

@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MainActivity extends Activity {
 
     private Button myButton;
@@ -36,6 +39,13 @@ public class MainActivity extends Activity {
         });
 
         System.out.println("onCreate end !");
+
+        HashMap<Integer, String> map1 = new HashMap<Integer, String>();
+        map1.put(1, "name");
+        HashMap<Integer, String> map2 = new HashMap<>();
+        map2.put(1, "name");
+        Map<Integer, String> map3 = new HashMap<>();
+        map3.put(1, "name");
 
     }
 
