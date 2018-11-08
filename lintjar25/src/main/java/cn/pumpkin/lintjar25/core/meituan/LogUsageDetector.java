@@ -49,7 +49,7 @@ public class LogUsageDetector extends Detector implements Detector.JavaPsiScanne
     public void visitMethod(JavaContext context, JavaElementVisitor visitor, PsiMethodCallExpression call, PsiMethod method) {
         if (context.getEvaluator().isMemberInClass(method, "android.util.Log")) {
             // 从配置文件获取Message
-            String msg = mLintConfig.getConfig("log-usage-message");
+            String msg = mLintConfig.getMessageConfig("log-usage-message");
             context.report(ISSUE, call, context.getLocation(call.getMethodExpression()), msg);
         }
     }

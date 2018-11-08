@@ -1,10 +1,11 @@
 {
   "lint-rules": {
-    "deprecated-api": [{
+    "deprecated-api": [
+      {
       "method-regex": "android\\.content\\.Intent\\.get(IntExtra|StringExtra|BooleanExtra|LongExtra|LongArrayExtra|StringArrayListExtra|SerializableExtra|ParcelableArrayListExtra).*",
       "message": "避免直接调用Intent.getXx()方法，特殊机型可能发生Crash，建议使用IntentUtils",
       "severity": "error"
-    },
+      },
       {
         "field": "java.lang.System.out",
         "message": "请勿直接使用System.out，应该使用LogUtils",

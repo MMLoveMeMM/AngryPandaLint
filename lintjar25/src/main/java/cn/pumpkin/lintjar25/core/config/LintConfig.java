@@ -8,8 +8,16 @@ import com.android.tools.lint.detector.api.Issue;
 import com.android.tools.lint.detector.api.Scope;
 import com.android.tools.lint.detector.api.Severity;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.EnumSet;
+import java.util.Iterator;
 
 import cn.pumpkin.lintjar25.core.meituan.LogUsageDetector;
 
@@ -41,6 +49,8 @@ public class LintConfig {
     private static final int ISSUE_PRIORITY = 9;
     private static final Severity ISSUE_SEVERITY = Severity.WARNING;
 
+    private String mJsonConfig = "";
+
     public static final Issue ISSUE = Issue.create(
             ISSUE_ID,
             ISSUE_DESCRIPTION,
@@ -56,12 +66,50 @@ public class LintConfig {
         File configFile = new File(projectDir, "custom-lint-config.json");
         if (configFile.exists() && configFile.isFile()) {
             // 读取配置文件...
+            InputStream in = null;
+            try {
+                in = new FileInputStream(configFile);
+                int tempByte;
+                while ((tempByte = in.read()) != -1) {
+                    System.out.println(tempByte);
+                    mJsonConfig += tempByte;
+                }
+                in.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
-    public String getConfig(String path){
-
-        return "";
+    public String getMessageConfig(String jsonKey) {
+        return getConfig(jsonKey,"message");
     }
 
+    public String getPrioConfig(String jsonKey) {
+        return getConfig(jsonKey,"severity");
+    }
+
+    private String getConfig(String jsonKey,String field){
+        try {
+            JSONObject rootJson = new JSONObject(mJsonConfig);
+            if (rootJson != null) {
+                JSONObject jsonLintRule = rootJson.optJSONObject("lint-rules");
+                JSONArray jsonApiArr = jsonLintRule.optJSONArray("deprecated-api");
+                for (int i = 0; i < jsonApiArr.length(); i++) {
+                    JSONObject json = (JSONObject) jsonApiArr.get(i);
+                    Iterator it = json.keys();
+                    while (it.hasNext()) {
+                        String key = (String) it.next();
+                        String value = json.getString(key);
+                        if(value.contains(jsonKey)){
+                            return json.optString(field);
+                        }
+                    }
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
 }
