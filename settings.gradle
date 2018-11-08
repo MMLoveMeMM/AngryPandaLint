@@ -1,1 +1,1 @@
-include ':app', ':lintjar', ':lintaar', ':lintjar25'
+include ':app', ':lintjar', ':lintaar', ':lintjar25', ':meituanaar', ':meituanjar', ':meituanplugin'

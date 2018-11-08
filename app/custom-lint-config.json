@@ -1,0 +1,30 @@
+{
+  "lint-rules": {
+    "deprecated-api": [{
+      "method-regex": "android\\.content\\.Intent\\.get(IntExtra|StringExtra|BooleanExtra|LongExtra|LongArrayExtra|StringArrayListExtra|SerializableExtra|ParcelableArrayListExtra).*",
+      "message": "避免直接调用Intent.getXx()方法，特殊机型可能发生Crash，建议使用IntentUtils",
+      "severity": "error"
+    },
+      {
+        "field": "java.lang.System.out",
+        "message": "请勿直接使用System.out，应该使用LogUtils",
+        "severity": "error"
+      },
+      {
+        "construction": "java.lang.Thread",
+        "message": "避免单独创建Thread执行后台任务，存在性能问题，建议使用AsyncTask",
+        "severity": "warning"
+      },
+      {
+        "super-class": "android.widget.BaseAdapter",
+        "message": "避免直接使用BaseAdapter，应该使用统一封装的BaseListAdapter",
+        "severity": "warning"
+      }],
+    "handle-exception": [{
+      "method": "android.graphics.Color.parseColor",
+      "exception": "java.lang.IllegalArgumentException",
+      "message": "Color.parseColor需要加try-catch处理IllegalArgumentException异常",
+      "severity": "error"
+    }]
+  }
+}

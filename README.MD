@@ -13,4 +13,7 @@ lintAPI 24版本和lintAPI 25版本类和接口都有所变更,lintAPI 24网上�
 compile project(path: ":lintaar")<br>
 这样在编译app工程的时候就会执行lint检查,同样生成html文件报告.<br>
 该工程默认情况下是默认的lint和自定义的lint并存的,两个都会检查代码是否符合规范.<br>
+<br>
+<br>
+美团技术后面看看,大致思路都是差不多,主要想借鉴他们plugin那一块的实现方式<br>
 

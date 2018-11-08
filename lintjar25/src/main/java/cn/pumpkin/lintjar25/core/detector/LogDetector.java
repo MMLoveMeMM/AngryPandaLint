@@ -33,13 +33,15 @@ public class LogDetector extends Detector implements Detector.JavaPsiScanner{
 
     @Override
     public List<String> getApplicableMethodNames() {
-        return Arrays.asList("v", "d", "i", "w", "e", "wtf","addSum");
+        // makeText 检查不能够使用Toast
+        return Arrays.asList("v", "d", "i", "w", "e", "wtf","addSum","makeText");
     }
 
     @Override
     public void visitMethod(JavaContext context, JavaElementVisitor visitor, PsiMethodCallExpression call, PsiMethod method) {
         if (context.getEvaluator().isMemberInClass(method, "android.util.Log")
-                || context.getEvaluator().isMemberInClass(method, "cn.pumpkin.angrypandalint.MainActivity")) {
+                || context.getEvaluator().isMemberInClass(method, "cn.pumpkin.angrypandalint.MainActivity")
+                || context.getEvaluator().isMemberInClass(method, "android.widget.Toast")) {
             context.report(ISSUE, call, context.getLocation(call.getMethodExpression()),
                     "dun't use android.util.Log,using uniform tool class liuzhibao");
         }

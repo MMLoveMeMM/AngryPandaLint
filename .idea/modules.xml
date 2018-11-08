@@ -7,6 +7,9 @@
       <module fileurl="file://$PROJECT_DIR$/lintaar/lintaar.iml" filepath="$PROJECT_DIR$/lintaar/lintaar.iml" />
       <module fileurl="file://$PROJECT_DIR$/lintjar/lintjar.iml" filepath="$PROJECT_DIR$/lintjar/lintjar.iml" />
       <module fileurl="file://$PROJECT_DIR$/lintjar25/lintjar25.iml" filepath="$PROJECT_DIR$/lintjar25/lintjar25.iml" />
+      <module fileurl="file://$PROJECT_DIR$/meituanaar/meituanaar.iml" filepath="$PROJECT_DIR$/meituanaar/meituanaar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/meituanjar/meituanjar.iml" filepath="$PROJECT_DIR$/meituanjar/meituanjar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/meituanplugin/meituanplugin.iml" filepath="$PROJECT_DIR$/meituanplugin/meituanplugin.iml" />
     </modules>
   </component>
 </project>

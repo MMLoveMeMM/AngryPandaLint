@@ -12,6 +12,9 @@
             <option value="$PROJECT_DIR$/lintaar" />
             <option value="$PROJECT_DIR$/lintjar" />
             <option value="$PROJECT_DIR$/lintjar25" />
+            <option value="$PROJECT_DIR$/meituanaar" />
+            <option value="$PROJECT_DIR$/meituanjar" />
+            <option value="$PROJECT_DIR$/meituanplugin" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
